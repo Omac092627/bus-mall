@@ -1,11 +1,12 @@
 'use strict'
 
 
+
 var imageOneEl = document.getElementById('picture1');
 var imageTwoEl = document.getElementById('picture2');
 var imageThreeEl = document.getElementById('picture3');
 var sectionEl = document.getElementById('image-container');
-
+var canvasEl = document.getElementById('myChart')
 var allPictures = [];
 var recentPictures = [];
 var allTotalClicked = [];
@@ -52,7 +53,9 @@ function generate() {
   } if (pic3 === pic1) {
     pic1 = random(allPictures.length);
   } if (pic2 === pic1) {
-    pic1 = random(allPictures.length)
+    pic1 = random(allPictures.length);
+  } if (pic1 === pic3) {
+    pic3 = random(allPictures.length);
   }
 
 
@@ -93,11 +96,7 @@ function handleClick(e) {
       allPictures[b].viewed++;
       allPictures[b].rounds--;
     }
-    for (var c = 0; c < allPictures.length; c++) {
-      if (clickedPic === 1) {
-        allPictures[c].shift();
-      }
-    }
+
   }
   generate();
 };
