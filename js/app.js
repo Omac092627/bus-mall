@@ -1,11 +1,13 @@
 'use strict'
 
+var rounds = 25;
+
 
 var imageOneEl = document.getElementById('picture1');
 var imageTwoEl = document.getElementById('picture2');
 var imageThreeEl = document.getElementById('picture3');
 var sectionEl = document.getElementById('image-container');
-
+var canvasEl = document.getElementById('myChart')
 var allPictures = [];
 var recentPictures = [];
 var allTotalClicked = [];
@@ -18,7 +20,6 @@ function PictureHolder(src, alt, title) {
   this.clicked = 0;
   this.viewed = 0;
   this.total = 0;
-  this.rounds = 25;
   allPictures.push(this);
   allViews.push(this.viewed);
   allTotalClicked.push(this.total);
@@ -52,7 +53,9 @@ function generate() {
   } if (pic3 === pic1) {
     pic1 = random(allPictures.length);
   } if (pic2 === pic1) {
-    pic1 = random(allPictures.length)
+    pic1 = random(allPictures.length);
+  } if (pic1 === pic3) {
+    pic3 = random(allPictures.length);
   }
 
 
@@ -81,28 +84,38 @@ function handleClick(e) {
   for (var i = 0; i < allPictures.length; i++) {
     if (clickedPic === allPictures[i].title) {
       allPictures[i].clicked++;
-      allPictures[i].rounds--;
+      rounds--;
     }
     if (clickedPic === allPictures[i].title && viewedPic === allPictures[i].title) {
       allPictures[i].total += 1;
     }
+
+  } if (rounds === 0) {
+    alert('you finished')
   }
 
   for (var b = 0; b < allPictures.length; b++) {
     if (viewedPic === allPictures[b].title) {
       allPictures[b].viewed++;
-      allPictures[b].rounds--;
     }
-    for (var c = 0; c < allPictures.length; c++) {
-      if (clickedPic === 1) {
-        allPictures[c].shift();
-      }
-    }
+
   }
   generate();
+
 };
 
+function draw() {
+  var canvas = document.getElementById('myChart');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
 
+    ctx.fillRect(25, 25, 100, 100);
+    ctx.clearRect(45, 45, 60, 60);
+    ctx.strokeRect(50, 50, 50, 50);
+  }
+}
+
+draw();
 
 
 new PictureHolder('img/bag.jpg', 'bag', 'bag');
@@ -125,7 +138,6 @@ new PictureHolder('img/unicorn.jpg', 'unicorn', 'unicorn');
 new PictureHolder('img/usb.gif', 'usb', 'usb');
 new PictureHolder('img/water-can.jpg', 'water-can', 'water-can');
 new PictureHolder('img/wine-glass.jpg', 'wine-glass', 'wine-glass');
-
 
 
 sectionEl.addEventListener('click', handleClick);
