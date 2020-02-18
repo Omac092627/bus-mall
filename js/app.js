@@ -10,8 +10,7 @@ var sectionEl = document.getElementById('image-container');
 var canvasEl = document.getElementById('myChart')
 var allPictures = [];
 var recentPictures = [];
-var allTotalClicked = [];
-var allViews = [];
+
 
 function PictureHolder(src, alt, title) {
   this.src = src;
@@ -21,8 +20,6 @@ function PictureHolder(src, alt, title) {
   this.viewed = 0;
   this.total = 0;
   allPictures.push(this);
-  allViews.push(this.viewed);
-  allTotalClicked.push(this.total);
 };
 
 function random(max) {
@@ -56,6 +53,8 @@ function generate() {
     pic1 = random(allPictures.length);
   } if (pic1 === pic3) {
     pic3 = random(allPictures.length);
+  } if (pic3 === pic2) {
+    pic2 = random(allPictures.length);
   }
 
 
@@ -91,7 +90,10 @@ function handleClick(e) {
     }
 
   } if (rounds === 0) {
-    alert('you finished')
+    sectionEl.removeEventListener('click', handleClick)
+    chartGen();
+
+    var stringify = JSON.stringify(allPictures);
   }
 
   for (var b = 0; b < allPictures.length; b++) {
@@ -101,21 +103,45 @@ function handleClick(e) {
 
   }
   generate();
-
 };
 
-function draw() {
-  var canvas = document.getElementById('myChart');
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
 
-    ctx.fillRect(25, 25, 100, 100);
-    ctx.clearRect(45, 45, 60, 60);
-    ctx.strokeRect(50, 50, 50, 50);
+
+function chartGen() {
+  var productName = [];
+  var votes = [];
+
+  for (var i = 0; i < allPictures.length; i++) {
+    productName.push(allPictures[i].alt);
+    votes.push(allPictures[i].clicked);
   }
+
+
+  var ctx = canvasEl.getContext('2d');
+
+  new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: productName,
+      datasets: [{
+        label: 'Number of Votes',
+        data: votes,
+      }]
+    },
+    options: {
+      maintainAspectRation: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+          }
+        }]
+      }
+    }
+
+  });
 }
 
-draw();
+
 
 
 new PictureHolder('img/bag.jpg', 'bag', 'bag');

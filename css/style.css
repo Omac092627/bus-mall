@@ -1,0 +1,62 @@
+
+
+#logo{
+  float: left;
+  position: absolute;
+}
+
+#h1{
+  float: left;
+  font-size: 40px;
+  position: absolute;
+  margin-left: 14.5%;
+}
+
+#image-container{
+  margin-left: 33%;
+  position: absolute;
+  float: left;
+  margin-top: 7%;
+  border: 1px solid black;
+  width: 56%;
+  border-collapse: collapse;
+  padding: 2%;
+}
+
+#myChart{
+  border: 1px black solid;
+  position: absolute;
+  float: left;
+  margin-top: 7%;
+}
+
+#lorem{
+  position: absolute;
+  margin-top: 29%;
+  border: 1px black solid;
+  font-size: 30px;
+  margin-left: 33%;
+  margin-right: 6.5%;
+  border-collapse: collapse;
+  padding: 2%;
+}
+
+#footy{
+  margin-top: 52%;
+  position: absolute;
+}
+
+#picture1{
+  width: 23%;
+  margin-right: 10%;
+  padding-left: 1%;
+}
+
+#picture2{
+  width: 23%;
+  margin-right: 10%;
+}
+
+#picture3{
+  width: 23%;
+}
