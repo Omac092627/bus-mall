@@ -2,12 +2,12 @@
 
 var rounds = 25;
 
-
 var imageOneEl = document.getElementById('picture1');
 var imageTwoEl = document.getElementById('picture2');
 var imageThreeEl = document.getElementById('picture3');
 var sectionEl = document.getElementById('image-container');
-var canvasEl = document.getElementById('myChart')
+var canvasEl = document.getElementById('myChart');
+var voteAgain = document.getElementById('button1');
 var allPictures = [];
 var recentPictures = [];
 
@@ -42,7 +42,6 @@ function generate() {
   while (recentPictures.includes(pic3)) {
     pic3 = random(allPictures.length);
   }
-
   while (pic1 === pic2) {
     pic2 = random(allPictures.length);
   } if (pic2 === pic3) {
@@ -56,8 +55,6 @@ function generate() {
   } if (pic3 === pic2) {
     pic2 = random(allPictures.length);
   }
-
-
   imageOneEl.src = allPictures[pic1].src;
   imageOneEl.alt = allPictures[pic1].alt;
   imageOneEl.title = allPictures[pic1].title;
@@ -72,77 +69,7 @@ function generate() {
   imageThreeEl.alt = allPictures[pic3].alt;
   imageThreeEl.title = allPictures[pic3].title
   recentPictures.push(pic3);
-
 }
-
-
-function handleClick(e) {
-  var clickedPic = e.target.title;
-  var viewedPic = e.target.title;
-
-  for (var i = 0; i < allPictures.length; i++) {
-    if (clickedPic === allPictures[i].title) {
-      allPictures[i].clicked++;
-      rounds--;
-    }
-    if (clickedPic === allPictures[i].title && viewedPic === allPictures[i].title) {
-      allPictures[i].total += 1;
-    }
-
-  } if (rounds === 0) {
-    sectionEl.removeEventListener('click', handleClick)
-    chartGen();
-
-    var stringify = JSON.stringify(allPictures);
-  }
-
-  for (var b = 0; b < allPictures.length; b++) {
-    if (viewedPic === allPictures[b].title) {
-      allPictures[b].viewed++;
-    }
-
-  }
-  generate();
-};
-
-
-
-function chartGen() {
-  var productName = [];
-  var votes = [];
-
-  for (var i = 0; i < allPictures.length; i++) {
-    productName.push(allPictures[i].alt);
-    votes.push(allPictures[i].clicked);
-  }
-
-
-  var ctx = canvasEl.getContext('2d');
-
-  new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-      labels: productName,
-      datasets: [{
-        label: 'Number of Votes',
-        data: votes,
-      }]
-    },
-    options: {
-      maintainAspectRation: true,
-      scales: {
-        yAxes: [{
-          ticks: {
-          }
-        }]
-      }
-    }
-
-  });
-}
-
-
-
 
 new PictureHolder('img/bag.jpg', 'bag', 'bag');
 new PictureHolder('img/banana.jpg', 'banana', 'banana');
@@ -165,6 +92,111 @@ new PictureHolder('img/usb.gif', 'usb', 'usb');
 new PictureHolder('img/water-can.jpg', 'water-can', 'water-can');
 new PictureHolder('img/wine-glass.jpg', 'wine-glass', 'wine-glass');
 
+function handleClick(e) {
+  var clickedPic = e.target.title;
+  var viewedPic = e.target.title;
 
+  for (var i = 0; i < allPictures.length; i++) {
+    if (clickedPic === allPictures[i].title) {
+      allPictures[i].clicked++;
+      rounds--;
+      var votesEl = document.getElementById('vote1');
+      votesEl.textContent = rounds;
+    }
+    if (clickedPic === allPictures[i].title && viewedPic === allPictures[i].title) {
+      allPictures[i].total += 1;
+    }
+
+  } if (rounds === 0) {
+    sectionEl.removeEventListener('click', handleClick)
+    chartGen();
+
+    var stringify = JSON.stringify(allPictures);
+  }
+
+  for (var b = 0; b < allPictures.length; b++) {
+    if (viewedPic === allPictures[b].title) {
+      allPictures[b].viewed++;
+    }
+  }
+  generate();
+};
 sectionEl.addEventListener('click', handleClick);
 generate();
+
+
+function chartGen() {
+  var productName = [];
+  var votes = [];
+  var viewed = [];
+  var colors = [];
+  var red = 0;
+  var blue = 0;
+  var green = 0;
+
+
+  for (var i = 0; i < allPictures.length; i++) {
+    productName.push(allPictures[i].alt);
+    votes.push(allPictures[i].clicked);
+    viewed.push(allPictures[i].viewed);
+    colors.push(`rgb(${red}, ${blue}, ${green})`)
+    red = red + i;
+    blue = blue + i;
+    green = green + i;
+  }
+
+
+  var ctx = canvasEl.getContext('2d');
+
+
+  new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: productName,
+      datasets: [{
+        label: 'Number of Votes/Views',
+        data: votes,
+        backgroundColor: colors,
+        borderColor: [
+          'rgba(240, 52, 52, 1)',
+          'rgba(42, 187, 155, 1)',
+          'rgba(44, 130, 201, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(240, 52, 52, 1)',
+          'rgba(42, 187, 155, 1)',
+          'rgba(44, 130, 201, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(240, 52, 52, 1)',
+          'rgba(42, 187, 155, 1)',
+          'rgba(44, 130, 201, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(240, 52, 52, 1)',
+          'rgba(44, 130, 201, 1)'
+        ],
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      maintainAspectRation: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+          }
+        }]
+      }
+    }
+
+  });
+}
+
+function handleClick1(e) {
+  location.reload();
+}
+voteAgain.addEventListener('click', handleClick1);
