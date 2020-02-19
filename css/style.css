@@ -13,7 +13,7 @@
 }
 @keyframes bus{
   from{left: 0px;}
-    to{left: 650px;}
+    to{left: 700px;}
 }
 
 #h1{
@@ -24,7 +24,7 @@
   margin-top: 1%;
   font-weight: bolder;
   text-shadow: 1px 1px white;
-  
+  font-family: 'Luckiest Guy', cursive;
 }
 
 
@@ -38,7 +38,6 @@
   border-collapse: collapse;
   padding: 2%;
   box-shadow: 5px 5px 5px 5px  black;
-
 }
 
 #myChart{
@@ -48,7 +47,6 @@
   margin-top: 10%;
   box-shadow: 5px 5px 5px 5px  black;
   margin-left: 1%;
-
 }
 
 #lorem{
@@ -61,7 +59,6 @@
   border-collapse: collapse;
   padding: 2%;
   box-shadow: 5px 5px 5px 5px black;
-
 }
 
 #footy{
@@ -70,8 +67,8 @@
   border: 1px solid black;
   box-shadow: 5px 5px 5px  black;
   margin-left: 1%;
-
 }
+
 
 #picture1{
   width: 23%;
@@ -84,13 +81,11 @@
   width: 23%;
   margin-right: 10%;
   box-shadow: 5px 5px 5px  black;
-
 }
 
 #picture3{
   width: 23%;
   box-shadow: 5px 5px 5px  black;
-
 }
 
 #vote1{
@@ -102,7 +97,6 @@
   border: 1px solid black;
   box-shadow: 5px 5px 5px  black;
   padding: .2%;
-
 }
 
 body{
@@ -128,6 +122,8 @@ background-color: thistle;
   border: 2px solid black;
   padding: 1px;
   transition: 0.4s;
+  font-weight: bolder;
+  background-color: thistle;
 }
 
 #button1:hover{

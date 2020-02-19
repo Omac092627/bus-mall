@@ -106,14 +106,12 @@ function handleClick(e) {
     if (clickedPic === allPictures[i].title && viewedPic === allPictures[i].title) {
       allPictures[i].total += 1;
     }
-
   } if (rounds === 0) {
     sectionEl.removeEventListener('click', handleClick)
     chartGen();
 
     var stringify = JSON.stringify(allPictures);
   }
-
   for (var b = 0; b < allPictures.length; b++) {
     if (viewedPic === allPictures[b].title) {
       allPictures[b].viewed++;
