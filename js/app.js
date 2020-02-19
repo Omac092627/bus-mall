@@ -152,8 +152,8 @@ function chartGen() {
     data: {
       labels: productName,
       datasets: [{
-        label: 'Number of Votes/Views',
-        data: votes, viewed,
+        label: 'Number of Votes',
+        data: votes,
         backgroundColor: [
           'rgba(240, 52, 52, 1)',
           'rgba(42, 187, 155, 1)',
