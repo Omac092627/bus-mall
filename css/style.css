@@ -32,7 +32,7 @@
   margin-left: 33%;
   position: absolute;
   float: left;
-  margin-top: 9%;
+  margin-top: 10%;
   border: 1px solid black;
   width: 56%;
   border-collapse: collapse;
@@ -44,6 +44,15 @@
   border: 1px black solid;
   position: absolute;
   float: left;
+  margin-top: 50.5%;
+  box-shadow: 5px 5px 5px 5px  black;
+  margin-left: 1%;
+}
+
+#myChart2{
+  border: 1px black solid;
+  position: absolute;
+  float: left;
   margin-top: 10%;
   box-shadow: 5px 5px 5px 5px  black;
   margin-left: 1%;
@@ -51,7 +60,7 @@
 
 #lorem{
   position: absolute;
-  margin-top: 29%;
+  margin-top: 31%;
   border: 1px black solid;
   font-size: 30px;
   margin-left: 33%;
@@ -62,7 +71,7 @@
 }
 
 #footy{
-  margin-top: 51%;
+  margin-top: 91%;
   position: absolute;
   border: 1px solid black;
   box-shadow: 5px 5px 5px  black;
@@ -91,7 +100,7 @@
 #vote1{
   position: absolute;
   margin-top: 7%;
-  margin-left:.9%;
+  margin-left:50%;
   font-weight: bolder;
   font-size: 22px;
   border: 1px solid black;
@@ -105,8 +114,8 @@ background-color: thistle;
 
 #products{
   position: absolute;
-  margin-left: 58%;
-  margin-top: 6.7%;
+  margin-left: 11%;
+  margin-top: 7.5%;
   font-weight: bolder;
   font-size: 21px;
   border: 1px solid black;
@@ -115,8 +124,8 @@ background-color: thistle;
 
 #button1{
   position: absolute;
-  margin-left: 12%;
-  margin-top: 48%;
+  margin-left: 11%;
+  margin-top: 88%;
   font-size: 15px;
   box-shadow: 5px 5px 5px  black;
   border: 2px solid black;
@@ -129,4 +138,23 @@ background-color: thistle;
 #button1:hover{
   background-color: red;
   color: white;
+}
+
+#productList{
+  position: absolute;
+  margin-left: 2%;
+  margin-top: 11%;
+  font-size: 25px;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+#viewResults{
+  position: absolute;
+  margin-top: 48%;
+  margin-left: 7%;
+  font-weight: bolder;
+  font-size: 21px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px  black;
+
 }
