@@ -1,4 +1,7 @@
 # bus-mall
+AUTHOR:
+    Lami Beach
+
 
 This is a blatant rip-off of SkyMall. Not to be used for actual distribution, just to show what your boy can do.
 
@@ -10,4 +13,6 @@ There are only 20 pictures to choose from and honestly, the baby is the most ado
 
 I attempted to structure the code in app.js to allow for an easy read. My brain isn't the most powerful so please bear with me as you descend through the madness.
 
-  Resources: chartjs library, placeholder.com., for the logo:https://www.google.com/url?sa=i&url=http%3A%2F%2Fclipart-library.com%2Fschool-bus-pictures-free.html&psig=AOvVaw306PAn8LnnAHff3bB-newA&ust=1582153556250000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDLt8Cb3OcCFQAAAAAdAAAAABAF, I used w3-schools animation for my logo; because they're awesome, used a location.reload() for my vote again button so the user can't waste more of their time.
+I added a local storage that tracks the clicks, views, and totals. The local storage starts at the top with a json parse. I wrapped my "new products" in a function that is only called when my local storage is < 0 because i need my products to display. So if the local storage is greater than 0 my local storage will parse the objects into the new product key. Down after the clicks are over, I stringify those parsed products and set them to the local storage. 
+
+  Resources: chartjs library, placeholder.com., for the logo:"http://24.media.tumblr.com/ebce26da67bbee3c5a3d4f5c57c99f8f/tumblr_msaxe5DzAf1snwkluo1_500.gif", I used w3-schools animation for my logo; because they're awesome, used a location.reload() for my vote again button so the user can't waste more of their time.
