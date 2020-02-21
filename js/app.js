@@ -138,19 +138,13 @@ function chartGen() {
   var productName = [];
   var votes = [];
   var viewed = [];
-  var colors = [];
-  var red = 0;
-  var blue = 0;
-  var green = 0;
+
 
   for (var i = 0; i < allPictures.length; i++) {
     productName.push(allPictures[i].alt);
     votes.push(allPictures[i].clicked);
     viewed.push(allPictures[i].viewed);
-    colors.push(`rgb(${red}, ${blue}, ${green})`)
-    red = red + i;
-    blue = blue + i;
-    green = green + i;
+
   }
 
 
@@ -158,13 +152,11 @@ function chartGen() {
 
 
   new Chart(ctx, {
-    type: 'horizontalBar',
+    type: 'bar',
     data: {
-      labels: productName,
       datasets: [{
         label: 'Number of Votes',
         data: votes,
-
         backgroundColor: [
           'rgba(240, 52, 52, 1)',
           'rgba(42, 187, 155, 1)',
@@ -187,6 +179,9 @@ function chartGen() {
           'rgba(240, 52, 52, 1)',
           'rgba(44, 130, 201, 1)'
         ],
+      }, {
+        label: 'Number of Views',
+        data: viewed,
         borderColor: [
           'rgba(240, 52, 52, 1)',
           'rgba(42, 187, 155, 1)',
@@ -210,20 +205,11 @@ function chartGen() {
           'rgba(44, 130, 201, 1)'
         ],
         borderWidth: 2,
-      }]
-
+        // Changes this dataset to become a line
+        type: 'line'
+      }],
+      labels: productName,
     },
-    options: {
-      maintainAspectRation: true,
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-          }
-        }]
-      }
-    }
-
   });
 }
 
