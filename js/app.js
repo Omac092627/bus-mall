@@ -36,7 +36,6 @@ function random(max) {
 
 function generate() {
 
-
   while (recentPictures.length > 6) {
     recentPictures.shift();
   }
